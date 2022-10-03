@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:45:58 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/03 16:46:00 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/03 17:52:26 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	ft_putchar(char c);
 
 void	rush(int x, int y)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;

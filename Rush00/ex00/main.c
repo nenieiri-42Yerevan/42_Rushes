@@ -6,14 +6,24 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:17:37 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/03 15:17:51 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/03 17:51:14 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "stdio.h"
+
 void	rush(int x, int y);
 
-int		main(void)
+int	main(void)
 {
 	rush(5, 3);
+	printf("\n");
+	rush(5, 1);
+	printf("\n");
+	rush(1, 1);
+	printf("\n");
+	rush(1, 5);
+	printf("\n");
+	rush(4, 4);
 	return (0);
 }
