@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 17:06:01 by vismaily          #+#    #+#             */
-/*   Updated: 2020/11/29 17:06:05 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/03 16:39:42 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	rush(int x, int y)
 	int i;
 	int j;
 
-	i = 1;
-	j = 1;
-	while (j <= y)
+	i = 0;
+	j = 0;
+	while (++j <= y)
 	{
-		while (i <= x)
+		while (++i <= x)
 		{
 			if (j == 1 && (i == 1 || i == x))
 				ft_putchar('A');
@@ -33,10 +33,8 @@ void	rush(int x, int y)
 				ft_putchar('B');
 			else
 				ft_putchar(' ');
-			i++;
 		}
-		i = 1;
+		i = 0;
 		ft_putchar('\n');
-		j++;
 	}
 }
