@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:17:37 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/03 17:51:14 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/04 15:57:45 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,11 @@ int	main(void)
 	rush(1, 5);
 	printf("\n");
 	rush(4, 4);
+	printf("\n");
+	rush(-5, 5);
+	printf("\n");
+	rush(5, -5);
+	printf("\n");
+	rush(-5, -5);
 	return (0);
 }
