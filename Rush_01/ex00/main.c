@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:29:21 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/10 15:22:53 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/10 15:24:51 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	rush00(char **argv)
 //			status = check_matrix(matrix);
 //		}
 		if (status == 1)
-			print_matrix(map_matrix);
+			print_map(map_matrix);
 		else
 			ft_putstr("ERROR: Solution does not exist!\n");
 	}

@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:55:42 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/10 15:23:00 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/10 15:25:02 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_putstr(char *s);
 char	*ft_strchr(const char *str, int c);
 int		parsing_argv(char *argv);
 char	**create_map_matrix(int size);
-void	print_matrix(char **matrix);
+void	print_map(char **matrix);
 int		check_map(char **map_matrix, char **input_matrix);
 
 #endif
