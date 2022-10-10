@@ -6,13 +6,13 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:02:54 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/10 15:03:42 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/10 15:23:08 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush00.h"
 
-int	check_matrix(char **matrix)
+int	check_map(char **map_matrix, char **input_matrix)
 {
 	return (1);
 }
