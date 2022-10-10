@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:29:21 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/10 15:24:51 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/10 18:12:37 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,23 @@ static int	rush00(char **argv)
 	else
 	{
 		map_matrix = create_map_matrix(size);
-		if (matrix == 0)
+		if (map_matrix == 0)
 			return (0);
-		status = check_map(map_matrix, input_matrix);
-//		while (status == 0)
-//		{
-//			change_matrix(matrix);
-//			status = check_matrix(matrix);
-//		}
+		input_matrix = create_input_matrix(argv[1], size);
+		if (input_matrix == 0)
+			return (0);
+		status = check_map(map_matrix, input_matrix, size);
+		while (status == 0)
+		{
+			change_matrix(map_matrix, size);
+			status = check_map(map_matrix, input_matrix, size);
+		}
 		if (status == 1)
-			print_map(map_matrix);
+			print_map(input_matrix);
 		else
 			ft_putstr("ERROR: Solution does not exist!\n");
+		free_matrix(input_matrix, 4);
+		free_matrix(map_matrix, size);
 	}
 	return (0);
 }
