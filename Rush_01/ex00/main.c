@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 13:24:09 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/10 13:57:35 by vismaily         ###   ########.fr       */
+/*   Created: 2022/10/10 13:29:21 by vismaily          #+#    #+#             */
+/*   Updated: 2022/10/10 14:46:49 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush00.h"
 
-char	*ft_strchr(const char *str, int c)
+static int	rush00(char **argv)
 {
-	char	*new_s;
+	int		size;
+	char	**matrix;
 
-	new_s = (char *)str;
-	while (*new_s != '\0')
+	size = 0;
+	size = parsing_argv(argv[1]);
+	if (size == -1)
+		ft_putstr("ERROR: Arguments not valid\n");
+	else
 	{
-		if (*new_s == c)
-			return (new_s);
-		++new_s;
+		matrix = create_matrix(size);
+		if (matrix == 0)
+			return (0);
+		print_matrix(matrix, size);
 	}
-	if (c == '\0' && *new_s == '\0')
-		return (new_s);
+	return (0);
+}
+
+int	main(int argc, char **argv)
+{
+	if (argc == 2)
+		return (rush00(argv));
+	else
+		ft_putstr("ERROR: Arguments count\n");
 	return (0);
 }

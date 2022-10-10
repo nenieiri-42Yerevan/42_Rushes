@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   print_matrix.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 13:24:09 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/10 13:57:35 by vismaily         ###   ########.fr       */
+/*   Created: 2022/10/10 14:38:03 by vismaily          #+#    #+#             */
+/*   Updated: 2022/10/10 14:41:20 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush00.h"
 
-char	*ft_strchr(const char *str, int c)
+void	print_matrix(char **matrix, int size)
 {
-	char	*new_s;
+	int	i;
+	int	j;
 
-	new_s = (char *)str;
-	while (*new_s != '\0')
+	i = -1;
+	while (++i < size)
 	{
-		if (*new_s == c)
-			return (new_s);
-		++new_s;
+		j = -1;
+		while (++j < size)
+		{
+			ft_putchar(matrix[i][j] + 48);
+			if (j != size -1)
+				ft_putchar(' ');
+		}
+		ft_putchar('\n');
 	}
-	if (c == '\0' && *new_s == '\0')
-		return (new_s);
-	return (0);
 }

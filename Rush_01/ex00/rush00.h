@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   rush00.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 13:24:09 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/10 13:57:35 by vismaily         ###   ########.fr       */
+/*   Created: 2022/10/10 13:55:42 by vismaily          #+#    #+#             */
+/*   Updated: 2022/10/10 14:41:26 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rush00.h"
+#ifndef RUSH00_H
+# define RUSH00_H
 
-char	*ft_strchr(const char *str, int c)
-{
-	char	*new_s;
+# include <stdio.h>
 
-	new_s = (char *)str;
-	while (*new_s != '\0')
-	{
-		if (*new_s == c)
-			return (new_s);
-		++new_s;
-	}
-	if (c == '\0' && *new_s == '\0')
-		return (new_s);
-	return (0);
-}
+# include <unistd.h>
+# include <stdlib.h>
+
+size_t	ft_strlen(char *str);
+void	ft_putchar(char c);
+void	ft_putstr(char *s);
+char	*ft_strchr(const char *str, int c);
+int		parsing_argv(char *argv);
+char	**create_matrix(int size);
+void	print_matrix(char **matrix, int size);
+
+#endif

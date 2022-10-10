@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 13:24:09 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/10 13:57:35 by vismaily         ###   ########.fr       */
+/*   Created: 2022/10/10 14:04:58 by vismaily          #+#    #+#             */
+/*   Updated: 2022/10/10 14:06:32 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush00.h"
 
-char	*ft_strchr(const char *str, int c)
+size_t	ft_strlen(char *str)
 {
-	char	*new_s;
+	size_t	i;
 
-	new_s = (char *)str;
-	while (*new_s != '\0')
-	{
-		if (*new_s == c)
-			return (new_s);
-		++new_s;
-	}
-	if (c == '\0' && *new_s == '\0')
-		return (new_s);
-	return (0);
+	i = 0;
+	while (str[i] != '\0')
+		++i;
+	return (i);
 }

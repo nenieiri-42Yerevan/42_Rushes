@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 13:24:09 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/10 13:57:35 by vismaily         ###   ########.fr       */
+/*   Created: 2022/10/10 13:54:42 by vismaily          #+#    #+#             */
+/*   Updated: 2022/10/10 14:15:14 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush00.h"
 
-char	*ft_strchr(const char *str, int c)
+void	ft_putstr(char *s)
 {
-	char	*new_s;
-
-	new_s = (char *)str;
-	while (*new_s != '\0')
-	{
-		if (*new_s == c)
-			return (new_s);
-		++new_s;
-	}
-	if (c == '\0' && *new_s == '\0')
-		return (new_s);
-	return (0);
+	write(1, s, ft_strlen(s));
 }
