@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:02:54 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/10 17:42:18 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/11 13:32:30 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int	check_map(char **map_matrix, char **input_matrix, int size)
 			else if (i == 3)
 				count = line_count_right(map_matrix, j, size);
 			if (input_matrix[i][j] != count)
-				return (check_end(map_matrix, size));
+				return (0);
 		}
 	}
 	return (1);
