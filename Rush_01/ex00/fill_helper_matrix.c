@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 14:52:33 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/11 16:27:54 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/11 16:37:40 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	fill_0(int **helper_matrix)
 	}
 }
 
-static int optimizer_up(int **map_matrix, int **input_matrix, \
+static int	optimizer_up(int **map_matrix, int **input_matrix, \
 							int **helper_matrix, int size)
 {
 	int	j;
@@ -57,7 +57,7 @@ static int optimizer_up(int **map_matrix, int **input_matrix, \
 	return (0);
 }
 
-static int optimizer_down(int **map_matrix, int **input_matrix, \
+static int	optimizer_down(int **map_matrix, int **input_matrix, \
 							int **helper_matrix, int size)
 {
 	int	j;
@@ -88,7 +88,7 @@ static int optimizer_down(int **map_matrix, int **input_matrix, \
 	return (0);
 }
 
-static int optimizer_left(int **map_matrix, int **input_matrix, \
+static int	optimizer_left(int **map_matrix, int **input_matrix, \
 							int **helper_matrix, int size)
 {
 	int	j;
@@ -109,9 +109,9 @@ static int optimizer_left(int **map_matrix, int **input_matrix, \
 		{
 			while (map_matrix[j][++k] != 0)
 			{
-				if (helper_matrix[j][k] == 1 && map_matrix[j][k] != k)
+				if (helper_matrix[j][k] == 1 && map_matrix[j][k] != k + 1)
 					return (-1);
-				map_matrix[j][k] = k;
+				map_matrix[j][k] = k + 1;
 				helper_matrix[j][k] = 1;
 			}
 		}
@@ -119,7 +119,7 @@ static int optimizer_left(int **map_matrix, int **input_matrix, \
 	return (0);
 }
 
-static int optimizer_right(int **map_matrix, int **input_matrix, \
+static int	optimizer_right(int **map_matrix, int **input_matrix, \
 							int **helper_matrix, int size)
 {
 	int	j;
