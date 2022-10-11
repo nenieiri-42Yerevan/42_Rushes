@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 14:52:33 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/11 17:31:12 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/11 17:38:18 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,8 @@ static int	optimizer_up(int **map_matrix, int **input_matrix, \
 		}
 		else
 		{
-			if (helper_matrix[0][j] == -1 && map_matrix[0][j] > size - \
-					input_matrix[0][j] + 1)
-				return (-1);
-			helper_matrix[0][j] = size - input_matrix[0][j] + 1;
+			if (helper_matrix[0][j] != -1)
+				helper_matrix[0][j] = size - input_matrix[0][j] + 1;
 		}
 	}
 	return (0);
@@ -93,10 +91,8 @@ static int	optimizer_down(int **map_matrix, int **input_matrix, \
 		}
 		else
 		{
-			if (helper_matrix[size - 1][j] == -1 && map_matrix[size - 1][j] > size - \
-					input_matrix[1][j] + 1)
-				return (-1);
-			helper_matrix[size - 1][j] = size - input_matrix[1][j] + 1;
+			if (helper_matrix[size - 1][j] != -1)
+				helper_matrix[size - 1][j] = size - input_matrix[1][j] + 1;
 		}
 	}
 	return (0);
@@ -131,10 +127,8 @@ static int	optimizer_left(int **map_matrix, int **input_matrix, \
 		}
 		else
 		{
-			if (helper_matrix[j][0] == -1 && map_matrix[j][0] > size - \
-					input_matrix[2][j] + 1)
-				return (-1);
-			helper_matrix[j][0] = size - input_matrix[2][j] + 1;
+			if (helper_matrix[j][0] != -1)
+				helper_matrix[j][0] = size - input_matrix[2][j] + 1;
 		}
 	}
 	return (0);
@@ -169,10 +163,8 @@ static int	optimizer_right(int **map_matrix, int **input_matrix, \
 		}
 		else
 		{
-			if (helper_matrix[j][size - 1] == -1 && map_matrix[j][size - 1] > size - \
-					input_matrix[3][j] + 1)
-				return (-1);
-			helper_matrix[j][size - 1] = size - input_matrix[3][j] + 1;
+			if (helper_matrix[j][size - 1] != -1)
+				helper_matrix[j][size - 1] = size - input_matrix[3][j] + 1;
 		}
 	}
 	return (0);
