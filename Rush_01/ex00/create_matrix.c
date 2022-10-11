@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_matrix.c                                      :+:      :+:    :+:   */
+/*   create_matrix.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 15:31:54 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/11 15:18:11 by vismaily         ###   ########.fr       */
+/*   Created: 2022/10/11 13:43:38 by vismaily          #+#    #+#             */
+/*   Updated: 2022/10/11 15:29:33 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush00.h"
 
-void	free_matrix(int **matrix, int i)
+int	**create_matrix(int height, int width)
 {
-	while (i-- != -1)
+	int	**matrix;
+	int	i;
+
+	i = -1;
+	matrix = (int **)malloc(sizeof(int *) * (height + 1));
+	if (!matrix)
+		return (0);
+	matrix[height] = 0;
+	while (++i < height)
 	{
-		free(matrix[i]);
-		matrix[i] = 0;
+		matrix[i] = (int *)malloc(sizeof(int) * (width + 1));
+		if (!matrix)
+		{
+			free_matrix(matrix, i);
+			return (0);
+		}
+		matrix[i][width] = 0;
 	}
-	free(matrix);
-	matrix = 0;
+	return (matrix);
 }

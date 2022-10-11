@@ -6,32 +6,56 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:29:21 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/11 13:32:55 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/11 16:19:18 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush00.h"
 
-static int	rush00(char **argv, int size)
+static int	init(int ***map_matrix, int ***input_matrix, int ***helper_matrix, \
+					int size)
 {
-	int		status;
-	char	**map_matrix;
-	char	**input_matrix;
-
-	status = 0;
-	map_matrix = create_map_matrix(size);
-	if (map_matrix == 0)
+	*map_matrix = create_matrix(size, size);
+	if (*map_matrix == 0)
 		return (0);
-	input_matrix = create_input_matrix(argv[1], size);
-	if (input_matrix == 0)
+	*input_matrix = create_matrix(4, size);
+	if (*input_matrix == 0)
 	{
-		free_matrix(map_matrix, size);
+		free_matrix(*map_matrix, size);
 		return (0);
 	}
+	*helper_matrix = create_matrix(size, size);
+	if (*helper_matrix == 0)
+	{
+		free_matrix(*map_matrix, size);
+		free_matrix(*input_matrix, size);
+		return (0);
+	}
+	fill_map_matrix(*map_matrix, size);
+	return (1);
+}
+
+static int	rush00(char **argv, int size)
+{
+	int	status;
+	int	**map_matrix;
+	int	**input_matrix;
+	int	**helper_matrix;
+
+	status = 0;
+	map_matrix = 0;
+	input_matrix = 0;
+	helper_matrix = 0;
+	if (init(&map_matrix, &input_matrix, &helper_matrix, size) == 0)
+		return (0);
+	if (fill_input_matrix(argv[1], input_matrix, size) == 0)
+		return (0);
+	if (fill_helper_matrix(map_matrix, input_matrix, helper_matrix, size) == 0)
+		return (0);
 	status = check_map(map_matrix, input_matrix, size);
 	while (status == 0)
 	{
-		if (change_matrix(map_matrix, size) == -1)
+		if (change_matrix(map_matrix, helper_matrix, size) == -1)
 		{
 			ft_putstr("ERROR: Solution does not exist!\n");
 			break ;

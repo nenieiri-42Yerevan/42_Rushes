@@ -6,13 +6,13 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:02:54 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/11 13:32:30 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/11 15:17:55 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush00.h"
 
-static int	line_count_up(char **map_matrix, int j, int size)
+static int	line_count_up(int **map_matrix, int j, int size)
 {
 	int	k;
 	int	count;
@@ -32,7 +32,7 @@ static int	line_count_up(char **map_matrix, int j, int size)
 	return (count);
 }
 
-static int	line_count_down(char **map_matrix, int j, int size)
+static int	line_count_down(int **map_matrix, int j, int size)
 {
 	int	k;
 	int	count;
@@ -52,7 +52,7 @@ static int	line_count_down(char **map_matrix, int j, int size)
 	return (count);
 }
 
-static int	line_count_left(char **map_matrix, int i, int size)
+static int	line_count_left(int **map_matrix, int i, int size)
 {
 	int	k;
 	int	count;
@@ -72,7 +72,7 @@ static int	line_count_left(char **map_matrix, int i, int size)
 	return (count);
 }
 
-static int	line_count_right(char **map_matrix, int i, int size)
+static int	line_count_right(int **map_matrix, int i, int size)
 {
 	int	k;
 	int	count;
@@ -92,7 +92,7 @@ static int	line_count_right(char **map_matrix, int i, int size)
 	return (count);
 }
 
-int	check_map(char **map_matrix, char **input_matrix, int size)
+int	check_map(int **map_matrix, int **input_matrix, int size)
 {
 	int	i;
 	int	j;

@@ -6,13 +6,13 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 14:38:03 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/10 15:24:55 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/11 15:18:03 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush00.h"
 
-void	print_map(char **map_matrix)
+void	print_map(int **map_matrix)
 {
 	int	i;
 	int	j;
