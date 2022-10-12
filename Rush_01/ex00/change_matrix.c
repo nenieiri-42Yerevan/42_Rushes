@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:50:08 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/12 16:23:17 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/12 17:43:19 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,11 @@ static int	change_again_row(int **map_matrix)
 
 int	change_matrix(int **map_matrix, int **helper_matrix)
 {
-	int	i;
-	int	j;
+	static int	max_rec = 0;
+	int			i;
+	int			j;
 
 	i = -1;
-//	print_map(map_matrix);
-//	usleep(1000);
-//	ft_putchar('\n');
 	while (map_matrix[++i] != 0)
 	{
 		j = -1;
@@ -86,8 +84,13 @@ int	change_matrix(int **map_matrix, int **helper_matrix)
 			else if (map_matrix[i][j] < helper_matrix[i][j])
 			{
 				map_matrix[i][j] += 1;
-				if (change_again_row(map_matrix) == -1)
+				if (change_again_row(map_matrix) == -1 && max_rec < 100000)
+				{
+					++max_rec;
 					change_matrix(map_matrix, helper_matrix);
+				}
+				else
+					max_rec = 0;
 				return (0);
 			}
 		}
