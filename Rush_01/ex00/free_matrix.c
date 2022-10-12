@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:31:54 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/12 11:54:10 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/12 16:37:12 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,15 @@
 
 void	free_matrix(int **matrix, int i)
 {
-	while (i-- != -1)
+	int	x;
+
+	x = -1;
+	if (matrix == 0)
+		return ;
+	while (++x < i)
 	{
-		free(matrix[i]);
-		matrix[i] = 0;
+		free(matrix[x]);
+		matrix[x] = 0;
 	}
 	free(matrix);
 	matrix = 0;

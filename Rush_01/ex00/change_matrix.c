@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:50:08 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/12 16:13:03 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/12 16:23:17 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	change_matrix(int **map_matrix, int **helper_matrix)
 
 	i = -1;
 //	print_map(map_matrix);
-//	usleep(100);
+//	usleep(1000);
 //	ft_putchar('\n');
 	while (map_matrix[++i] != 0)
 	{
