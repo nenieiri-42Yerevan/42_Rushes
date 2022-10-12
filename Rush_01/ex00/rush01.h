@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:55:42 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/12 11:52:17 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/12 13:33:26 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		fill_input_matrix(char *argv, int **input_matrix, int size);
 void	free_matrix(int **matrix, int i);
 void	print_map(int **matrix);
 int		check_map(int **map_matrix, int **input_matrix, int size);
-int		change_matrix(int **map_matrix, int **helper_matrix, int size);
+int		change_matrix(int **map_matrix, int **helper_matrix);
 
 int		fill_helper_matrix(int **map_matrix, int **input_matrix, \
 							int **helper_matrix, int size);

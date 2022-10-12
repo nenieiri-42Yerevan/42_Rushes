@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:29:21 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/12 12:16:55 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/12 16:01:20 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ static int	rush00(char **argv, int size)
 		return (0);
 	if (fill_helper_matrix(map_matrix, input_matrix, helper_matrix, size) == 0)
 		return (0);
-/*	status = check_map(map_matrix, input_matrix, size);
+	status = check_map(map_matrix, input_matrix, size);
 	while (status == 0)
 	{
-		if (change_matrix(map_matrix, helper_matrix, size) == -1)
+		if (change_matrix(map_matrix, helper_matrix) == -1)
 		{
 			ft_putstr("ERROR: Solution does not exist!\n");
 			break ;
@@ -66,7 +66,7 @@ static int	rush00(char **argv, int size)
 		print_map(map_matrix);
 	free_matrix(input_matrix, 4);
 	free_matrix(map_matrix, size);
-*/	return (0);
+	return (0);
 }
 
 int	main(int argc, char **argv)
