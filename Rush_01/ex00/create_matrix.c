@@ -6,11 +6,11 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:43:38 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/11 15:29:33 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/12 11:53:48 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rush00.h"
+#include "rush01.h"
 
 int	**create_matrix(int height, int width)
 {

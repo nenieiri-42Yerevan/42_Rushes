@@ -6,11 +6,11 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:28:25 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/11 15:33:06 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/12 11:54:04 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rush00.h"
+#include "rush01.h"
 
 int	fill_input_matrix(char *argv, int **input_matrix, int size)
 {

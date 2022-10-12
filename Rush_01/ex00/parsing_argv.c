@@ -6,22 +6,11 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:31:59 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/10 13:59:20 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/12 12:16:33 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rush00.h"
-
-static int	parsing_size(int size)
-{
-	int	i;
-
-	i = 3;
-	while (++i != 10)
-		if (size == i * i)
-			return (i);
-	return (-1);
-}
+#include "rush01.h"
 
 int	parsing_argv(char *argv)
 {
@@ -42,6 +31,8 @@ int	parsing_argv(char *argv)
 		else
 			return (-1);
 	}
-	size = parsing_size(size);
+	if (size % 4 != 0)
+		return (-1);
+	size /= 4;
 	return (size);
 }

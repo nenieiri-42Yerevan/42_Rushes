@@ -6,11 +6,11 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:50:08 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/11 17:39:11 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/12 11:54:36 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rush00.h"
+#include "rush01.h"
 
 int	change_matrix(int **map_matrix, int **helper_matrix, int size)
 {
@@ -18,9 +18,9 @@ int	change_matrix(int **map_matrix, int **helper_matrix, int size)
 	int	j;
 
 	i = -1;
-//	print_map(map_matrix);
-//	usleep(500);
-//	ft_putchar('\n');
+	print_map(helper_matrix);
+	usleep(500);
+	ft_putchar('\n');
 	while (map_matrix[++i] != 0)
 	{
 		j = -1;

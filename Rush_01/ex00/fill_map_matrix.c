@@ -6,11 +6,11 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 14:19:01 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/11 15:19:01 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/12 11:53:58 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rush00.h"
+#include "rush01.h"
 
 void	fill_map_matrix(int **map_matrix, int size)
 {

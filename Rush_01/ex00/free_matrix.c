@@ -6,11 +6,11 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:31:54 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/11 15:18:11 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/12 11:54:10 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rush00.h"
+#include "rush01.h"
 
 void	free_matrix(int **matrix, int i)
 {

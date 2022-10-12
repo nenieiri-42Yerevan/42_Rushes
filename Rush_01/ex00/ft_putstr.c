@@ -6,11 +6,11 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:54:42 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/10 14:15:14 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/12 11:53:12 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rush00.h"
+#include "rush01.h"
 
 void	ft_putstr(char *s)
 {

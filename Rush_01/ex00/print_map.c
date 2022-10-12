@@ -6,11 +6,11 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 14:38:03 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/11 15:18:03 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/12 11:54:17 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rush00.h"
+#include "rush01.h"
 
 void	print_map(int **map_matrix)
 {
