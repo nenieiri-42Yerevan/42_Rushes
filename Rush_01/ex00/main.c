@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:29:21 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/13 16:50:53 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:06:55 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	rush00(char **argv, int size)
 		return (free_all(&matrixes, size));
 	if (fill_helper_matrix(&matrixes, size) == 0)
 		return (free_all(&matrixes, size));
-	status = check_map(&matrixes, size);
+/*	status = check_map(&matrixes, size);
 	while (status == 0)
 	{
 		if (change_matrix(&matrixes, size) == -1)
@@ -65,7 +65,8 @@ static int	rush00(char **argv, int size)
 		status = check_map(&matrixes, size);
 	}
 	if (status == 1)
-		print_map(matrixes.map_matrix);
+*/		print_map(matrixes.input_matrix);
+//	free_all(&matrixes, size);
 	return (0);
 }
 

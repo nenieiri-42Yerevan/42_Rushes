@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:43:44 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/13 15:15:25 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:24:02 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static void	optimizer_right_size(int **input_matrix, int ***helper_matrix, \
 		t = 1;
 		while (--k != -1)
 		{
+			if (helper_matrix[j][k] == 0)
+				break ;
 			z = max_pos(helper_matrix[j][k], size);
 			if ((size - input_matrix[3][j] + t) >= *z)
 				break ;
@@ -61,7 +63,7 @@ int	optimizer_right(t_matrix *matrixes, int size)
 
 	j = -1;
 	optimizer_right_size(matrixes->input_matrix, matrixes->helper_matrix, size);
-	while (matrixes->input_matrix[3][++j] != 0)
+/*	while (matrixes->input_matrix[3][++j] != 0)
 	{
 		if (matrixes->input_matrix[3][j] == 1)
 		{
@@ -80,5 +82,5 @@ int	optimizer_right(t_matrix *matrixes, int size)
 				return (-1);
 		}
 	}
-	return (0);
+*/	return (0);
 }

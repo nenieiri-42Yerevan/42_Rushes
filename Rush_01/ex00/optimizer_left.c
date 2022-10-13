@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:39:03 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/13 15:59:25 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:24:30 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static void	optimizer_left_size(int **input_matrix, int ***helper_matrix, \
 		t = 1;
 		while (helper_matrix[j][++k] != 0)
 		{
+			if (helper_matrix[j][k] == 0)
+				break ;
 			z = max_pos(helper_matrix[j][k], size);
 			if ((size - input_matrix[2][j] + t) >= *z)
 				break ;

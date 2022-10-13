@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:20:12 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/13 15:02:00 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:25:06 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static void	optimizer_down_size(int **input_matrix, int ***helper_matrix, \
 		t = 1;
 		while (--k != -1)
 		{
+			if (helper_matrix[k][j] == 0)
+				break ;
 			z = max_pos(helper_matrix[k][j], size);
 			if ((size - input_matrix[1][j] + t) >= *z)
 				break ;
