@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:43:44 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/13 17:24:02 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/13 18:00:21 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static int	optimizer_right_line(int **map_matrix, int ***helper_matrix, int j, \
 	{
 		if (helper_matrix[j][k] == 0 && map_matrix[j][k] != size - k)
 			return (-1);
+		if (helper_matrix[j][k] == 0)
+			continue ;
 		if (if_in(helper_matrix[j][k], k + 1, size) == -1)
 			return (-1);
 		map_matrix[j][k] = size - k;
@@ -63,13 +65,16 @@ int	optimizer_right(t_matrix *matrixes, int size)
 
 	j = -1;
 	optimizer_right_size(matrixes->input_matrix, matrixes->helper_matrix, size);
-/*	while (matrixes->input_matrix[3][++j] != 0)
+	while (matrixes->input_matrix[3][++j] != 0)
 	{
 		if (matrixes->input_matrix[3][j] == 1)
 		{
-			if ((matrixes->helper_matrix[j][size - 1] == 0 && \
-					matrixes->map_matrix[j][size - 1] != size) || \
-					*max_pos(matrixes->helper_matrix[j][size - 1], size) != size)
+			if (matrixes->helper_matrix[j][size - 1] == 0 && \
+					matrixes->map_matrix[j][size - 1] != size)
+				return (-1);
+			if (matrixes->helper_matrix[j][size - 1] == 0)
+				continue ;
+			if (*max_pos(matrixes->helper_matrix[j][size - 1], size) != size)
 				return (-1);
 			free(matrixes->helper_matrix[j][size - 1]);
 			matrixes->helper_matrix[j][size - 1] = 0;
@@ -82,5 +87,5 @@ int	optimizer_right(t_matrix *matrixes, int size)
 				return (-1);
 		}
 	}
-*/	return (0);
+	return (0);
 }

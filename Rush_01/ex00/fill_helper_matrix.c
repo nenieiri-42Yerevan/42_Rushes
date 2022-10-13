@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 14:52:33 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/13 17:02:12 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:56:57 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	fill_matrix(int ***helper_matrix, int size)
 					free(helper_matrix[i][k]);
 					helper_matrix[i][k] = 0;
 				}
-				free_matrix_3d(helper_matrix);
+				free_matrix_3d(helper_matrix, size);
 				return (-1);
 			}
 			fill_with_size(helper_matrix[i][j], size);

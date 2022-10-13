@@ -6,13 +6,13 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 12:42:56 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/13 14:48:33 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:49:04 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush01.h"
 
-void	free_matrix_3d(int ***matrix)
+void	free_matrix_3d(int ***matrix, int size)
 {
 	int	i;
 	int	j;
@@ -23,10 +23,13 @@ void	free_matrix_3d(int ***matrix)
 	while (matrix[++i] != 0)
 	{
 		j = -1;
-		while (matrix[i][++j] != 0)
+		while (++j < size != 0)
 		{
-			free(matrix[i][j]);
-			matrix[i][j] = 0;
+			if (matrix[i][j] != 0)
+			{
+				free(matrix[i][j]);
+				matrix[i][j] = 0;
+			}
 		}
 		free(matrix[i]);
 		matrix[i] = 0;

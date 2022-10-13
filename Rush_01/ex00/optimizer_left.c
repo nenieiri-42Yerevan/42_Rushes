@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:39:03 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/13 17:24:30 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:59:19 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static int	optimizer_left_line(int **map_matrix, int ***helper_matrix, int j, \
 	{
 		if (helper_matrix[j][k] == 0 && map_matrix[j][k] != k + 1)
 			return (-1);
+		if (helper_matrix[j][k] == 0)
+			continue ;
 		if (if_in(helper_matrix[j][k], k + 1, size) == -1)
 			return (-1);
 		map_matrix[j][k] = k + 1;
@@ -67,9 +69,12 @@ int	optimizer_left(t_matrix *matrixes, int size)
 	{
 		if (matrixes->input_matrix[2][j] == 1)
 		{
-			if ((matrixes->helper_matrix[j][0] == 0 && \
-					matrixes->map_matrix[j][0] != size) || \
-					*max_pos(matrixes->helper_matrix[j][0], size) != size)
+			if (matrixes->helper_matrix[j][0] == 0 && \
+					matrixes->map_matrix[j][0] != size)
+				return (-1);
+			if (matrixes->helper_matrix[j][0] == 0)
+				continue ;
+			if (*max_pos(matrixes->helper_matrix[j][0], size) != size)
 				return (-1);
 			free(matrixes->helper_matrix[j][0]);
 			matrixes->helper_matrix[j][0] = 0;

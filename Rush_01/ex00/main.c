@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:29:21 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/13 17:06:55 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/13 18:03:24 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	free_all(t_matrix *matrixes, int size)
 {
 	free_matrix_2d(matrixes->input_matrix, 4);
 	free_matrix_2d(matrixes->map_matrix, size);
-	free_matrix_3d(matrixes->helper_matrix);
+	free_matrix_3d(matrixes->helper_matrix, size);
 	return (0);
 }
 
@@ -54,7 +54,7 @@ static int	rush00(char **argv, int size)
 		return (free_all(&matrixes, size));
 	if (fill_helper_matrix(&matrixes, size) == 0)
 		return (free_all(&matrixes, size));
-/*	status = check_map(&matrixes, size);
+	status = check_map(&matrixes, size);
 	while (status == 0)
 	{
 		if (change_matrix(&matrixes, size) == -1)
@@ -65,8 +65,8 @@ static int	rush00(char **argv, int size)
 		status = check_map(&matrixes, size);
 	}
 	if (status == 1)
-*/		print_map(matrixes.input_matrix);
-//	free_all(&matrixes, size);
+		print_map(matrixes.map_matrix);
+	free_all(&matrixes, size);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:20:12 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/13 17:25:06 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:56:48 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static int	optimizer_down_line(int **map_matrix, int ***helper_matrix, int j, \
 	{
 		if (helper_matrix[k][j] == 0 && map_matrix[k][j] != size - k)
 			return (-1);
+		if (helper_matrix[k][j] == 0)
+			continue ;
 		if (if_in(helper_matrix[k][j], size - k, size) == -1)
 			return (-1);
 		map_matrix[k][j] = size - k;
@@ -67,9 +69,12 @@ int	optimizer_down(t_matrix *matrixes, int size)
 	{
 		if (matrixes->input_matrix[1][j] == 1)
 		{
-			if ((matrixes->helper_matrix[size - 1][j] == 0 && \
-					matrixes->map_matrix[size - 1][j] != size) || \
-					*max_pos(matrixes->helper_matrix[size - 1][j], size) != size)
+			if (matrixes->helper_matrix[size - 1][j] == 0 && \
+					matrixes->map_matrix[size - 1][j] != size)
+				return (-1);
+			if (matrixes->helper_matrix[size - 1][j] == 0)
+				continue ;
+			if (*max_pos(matrixes->helper_matrix[size - 1][j], size) != size)
 				return (-1);
 			free(matrixes->helper_matrix[size - 1][j]);
 			matrixes->helper_matrix[size - 1][j] = 0;
