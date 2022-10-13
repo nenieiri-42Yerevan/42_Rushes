@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:50:08 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/13 16:55:18 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/13 19:42:32 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,23 @@ static int	change_again_row(int **map_matrix)
 	return (change_again_col(map_matrix));
 }
 
+static void	next_val(int *current_val, int *arr, int size)
+{
+	int	i;
+
+	i = -1;
+	while (++i < size)
+	{
+		if (arr[i] == -10)
+			continue ;
+		else if (arr[i] > *current_val)
+		{
+			*current_val = arr[i];
+			break ;
+		}
+	}
+}
+
 int	change_matrix(t_matrix *matrixes, int size)
 {
 	static int	max_rec = 0;
@@ -69,9 +86,9 @@ int	change_matrix(t_matrix *matrixes, int size)
 	int			j;
 
 	i = -1;
-//	print_map(map_matrix);
-//	usleep(1000);
-//	printf("\n");
+	print_map(matrixes->map_matrix);
+	usleep(1000);
+	printf("\n");
 	while (matrixes->map_matrix[++i] != 0)
 	{
 		j = -1;
@@ -90,7 +107,8 @@ int	change_matrix(t_matrix *matrixes, int size)
 			else if (matrixes->map_matrix[i][j] < \
 					*max_pos(matrixes->helper_matrix[i][j], size))
 			{
-				matrixes->map_matrix[i][j] += 1;
+				next_val(&(matrixes->map_matrix[i][j]), \
+						matrixes->helper_matrix[i][j], size);
 				if (change_again_row(matrixes->map_matrix) == -1 && max_rec < 100000)
 				{
 					++max_rec;
