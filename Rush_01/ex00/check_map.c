@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:02:54 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/12 16:08:20 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/13 11:46:54 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static int	line_count_right(int **map_matrix, int i, int size)
 	return (count);
 }
 
-int	check_map(int **map_matrix, int **input_matrix, int size)
+int	check_map(t_matrix *matrixes, int size)
 {
 	int	i;
 	int	j;
@@ -102,17 +102,17 @@ int	check_map(int **map_matrix, int **input_matrix, int size)
 	while (++i < 4)
 	{
 		j = -1;
-		while (input_matrix[i][++j] != '\0')
+		while (matrixes->input_matrix[i][++j] != '\0')
 		{
 			if (i == 0)
-				count = line_count_up(map_matrix, j, size);
+				count = line_count_up(matrixes->map_matrix, j, size);
 			else if (i == 1)
-				count = line_count_down(map_matrix, j, size);
+				count = line_count_down(matrixes->map_matrix, j, size);
 			else if (i == 2)
-				count = line_count_left(map_matrix, j, size);
+				count = line_count_left(matrixes->map_matrix, j, size);
 			else if (i == 3)
-				count = line_count_right(map_matrix, j, size);
-			if (input_matrix[i][j] != count)
+				count = line_count_right(matrixes->map_matrix, j, size);
+			if (matrixes->input_matrix[i][j] != count)
 				return (0);
 		}
 	}

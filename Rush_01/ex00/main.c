@@ -6,68 +6,67 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:29:21 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/12 16:39:04 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:54:15 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush01.h"
 
-static int	init(int ***map_matrix, int ***input_matrix, int ***helper_matrix, \
-					int size)
+static int	init(t_matrix *matrixes, int size)
 {
-	*map_matrix = create_matrix(size, size);
-	if (*map_matrix == 0)
+	matrixes->map_matrix = create_matrix_2d(size, size);
+	if (matrixes->map_matrix == 0)
 		return (0);
-	*input_matrix = create_matrix(4, size);
-	if (*input_matrix == 0)
+	matrixes->input_matrix = create_matrix_2d(4, size);
+	if (matrixes->input_matrix == 0)
 	{
-		free_matrix(*map_matrix, size);
+		free_matrix_2d(matrixes->map_matrix, size);
 		return (0);
 	}
-	*helper_matrix = create_matrix(size, size);
-	if (*helper_matrix == 0)
+	matrixes->helper_matrix = create_matrix_3d(size, size);
+	if (matrixes->helper_matrix == 0)
 	{
-		free_matrix(*map_matrix, size);
-		free_matrix(*input_matrix, size);
+		free_matrix_2d(matrixes->map_matrix, size);
+		free_matrix_2d(matrixes->input_matrix, size);
 		return (0);
 	}
-	fill_map_matrix(*map_matrix, size);
+	fill_map_matrix(matrixes->map_matrix, size);
 	return (1);
+}
+
+static int	free_all(t_matrix *matrixes)
+{
+	free_matrix(matrixes->input_matrix, 4);
+	free_matrix(matrixes->map_matrix, size);
+	free_matrix(matrixes->helper_matrix, size);
+	return (0);
 }
 
 static int	rush00(char **argv, int size)
 {
-	int	status;
-	int	**map_matrix;
-	int	**input_matrix;
-	int	**helper_matrix;
+	int			status;
+	t_matrix	matrixes;
 
 	status = 0;
-	map_matrix = 0;
-	input_matrix = 0;
-	helper_matrix = 0;
-	if (init(&map_matrix, &input_matrix, &helper_matrix, size) == 0)
-		return (0);
-	if (fill_input_matrix(argv[1], input_matrix, size) == 0)
-		return (0);
-	if (fill_helper_matrix(map_matrix, input_matrix, helper_matrix, size) == 0)
-		return (0);
-	status = check_map(map_matrix, input_matrix, size);
+	if (init(&matrixes, size) == 0)
+		return (free_all(&matrixes));
+	if (fill_input_matrix(argv[1], matrixes.input_matrix, size) == 0)
+		return (free_all(&matrixes));
+	if (fill_helper_matrix(&matrixes, size) == 0)
+		return (free_all(&matrixes));
+/*	status = check_map(&matrixes, size);
 	while (status == 0)
 	{
-		if (change_matrix(map_matrix, helper_matrix) == -1)
+		if (change_matrix(&matrixes) == -1)
 		{
 			ft_putstr("ERROR: Solution does not exist!\n");
 			break ;
 		}
-		status = check_map(map_matrix, input_matrix, size);
+		status = check_map(&matrixes, size);
 	}
 	if (status == 1)
-		print_map(map_matrix);
-	free_matrix(input_matrix, 4);
-	free_matrix(map_matrix, size);
-	free_matrix(helper_matrix, size);
-	return (0);
+		print_map(matrixes.map_matrix);
+*/	return (0);
 }
 
 int	main(int argc, char **argv)

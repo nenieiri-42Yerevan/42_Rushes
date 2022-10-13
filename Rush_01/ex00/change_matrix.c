@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:50:08 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/12 17:43:19 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/13 11:49:12 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,32 +62,35 @@ static int	change_again_row(int **map_matrix)
 	return (change_again_col(map_matrix));
 }
 
-int	change_matrix(int **map_matrix, int **helper_matrix)
+int	change_matrix(t_matrix *matrixes)
 {
 	static int	max_rec = 0;
 	int			i;
 	int			j;
 
 	i = -1;
-	while (map_matrix[++i] != 0)
+//	print_map(map_matrix);
+//	usleep(1000);
+//	printf("\n");
+	while (matrixes->map_matrix[++i] != 0)
 	{
 		j = -1;
-		while (map_matrix[i][++j] != 0)
+		while (matrixes->map_matrix[i][++j] != 0)
 		{
-			if (map_matrix[i + 1] == 0 && map_matrix[i][j + 1] == 0 && \
-					(map_matrix[i][j] == helper_matrix[i][j] || helper_matrix[i][j] == -1))
+			if (matrixes->map_matrix[i + 1] == 0 && matrixes->map_matrix[i][j + 1] == 0 && \
+					(matrixes->map_matrix[i][j] == matrixes->helper_matrix[i][j] || matrixes->helper_matrix[i][j] == -1))
 				return (-1);
-			if (helper_matrix[i][j] == -1)
+			if (matrixes->helper_matrix[i][j] == -1)
 				continue ;
-			if (map_matrix[i][j] >= helper_matrix[i][j])
-				map_matrix[i][j] = 1;
-			else if (map_matrix[i][j] < helper_matrix[i][j])
+			if (matrixes->map_matrix[i][j] >= matrixes->helper_matrix[i][j])
+				matrixes->map_matrix[i][j] = 1;
+			else if (matrixes->map_matrix[i][j] < matrixes->helper_matrix[i][j])
 			{
-				map_matrix[i][j] += 1;
-				if (change_again_row(map_matrix) == -1 && max_rec < 100000)
+				matrixes->map_matrix[i][j] += 1;
+				if (change_again_row(matrixes->map_matrix) == -1 && max_rec < 100000)
 				{
 					++max_rec;
-					change_matrix(map_matrix, helper_matrix);
+					change_matrix(matrixes);
 				}
 				else
 					max_rec = 0;

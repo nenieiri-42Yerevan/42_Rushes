@@ -6,17 +6,18 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:15:33 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/12 12:54:22 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/13 14:58:34 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush01.h"
 
-static void	optimizer_up_size(int **input_matrix, int **helper_matrix, int size)
+static void	optimizer_up_size(int **input_matrix, int ***helper_matrix, int size)
 {
 	int	j;
 	int	k;
 	int	t;
+	int	*z;
 
 	j = -1;
 	while (input_matrix[0][++j] != 0)
@@ -25,48 +26,55 @@ static void	optimizer_up_size(int **input_matrix, int **helper_matrix, int size)
 		t = 1;
 		while (helper_matrix[++k] != 0)
 		{
-			if ((size - input_matrix[0][j] + t) >= helper_matrix[k][j])
+			z = max_pos(helper_matrix[k][j], size);
+			if ((size - input_matrix[0][j] + t) >= *z)
 				break ;
-			helper_matrix[k][j] = size - input_matrix[0][j] + t;
+			cut_values(helper_matrix[k][j], size - input_matrix[0][j] + t, size);
 			++t;
 		}
 	}
 }
 
-static int	optimizer_up_line(int **map_matrix, int **helper_matrix, int j)
+static int	optimizer_up_line(int **map_matrix, int ***helper_matrix, int j, int size)
 {
 	int	k;
 
 	k = -1;
 	while (map_matrix[++k] != 0)
 	{
-		if (helper_matrix[k][j] == -1 && map_matrix[k][j] != k + 1)
+		if (helper_matrix[k][j] == 0 && map_matrix[k][j] != k + 1)
+			return (-1);
+		if (if_in(helper_matrix[k][j], k + 1, size) == -1)
 			return (-1);
 		map_matrix[k][j] = k + 1;
-		helper_matrix[k][j] = -1;
+		free(helper_matrix[k][j]);
+		helper_matrix[k][j] = 0;
 	}
 	return (0);
 }
 
-int	optimizer_up(int **map_matrix, int **input_matrix, \
-					int **helper_matrix, int size)
+int	optimizer_up(t_matrix *matrixes, int size)
 {
 	int	j;
 
 	j = -1;
-	optimizer_up_size(input_matrix, helper_matrix, size);
-	while (input_matrix[0][++j] != 0)
+	optimizer_up_size(matrixes->input_matrix, matrixes->helper_matrix, size);
+	while (matrixes->input_matrix[0][++j] != 0)
 	{
-		if (input_matrix[0][j] == 1)
+		if (matrixes->input_matrix[0][j] == 1)
 		{
-			if (helper_matrix[0][j] == -1 && map_matrix[0][j] != size)
+			if ((matrixes->helper_matrix[0][j] == 0 && \
+					matrixes->map_matrix[0][j] != size) || \
+					*max_pos(matrixes->helper_matrix[0][j], size) != size)
 				return (-1);
-			helper_matrix[0][j] = -1;
-			map_matrix[0][j] = size;
+			free(matrixes->helper_matrix[0][j]);
+			matrixes->helper_matrix[0][j] = 0;
+			matrixes->map_matrix[0][j] = size;
 		}
-		else if (input_matrix[0][j] == size)
+		else if (matrixes->input_matrix[0][j] == size)
 		{
-			if (optimizer_up_line(map_matrix, helper_matrix, j) == -1)
+			if (optimizer_up_line(matrixes->map_matrix, \
+						matrixes->helper_matrix, j, size) == -1)
 				return (-1);
 		}
 	}

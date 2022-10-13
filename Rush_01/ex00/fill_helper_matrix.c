@@ -6,39 +6,64 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 14:52:33 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/12 12:59:09 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/13 15:16:48 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush01.h"
 
-static void	fill_0(int **helper_matrix, int size)
+static void	fill_with_size(int *helper_matrix_z, int size)
+{
+	int	i;
+
+	i = -1;
+	while (++i < size)
+		helper_matrix_z[i] = i + 1;
+}
+
+static int	fill_matrix(int ***helper_matrix, int size)
 {
 	int	i;
 	int	j;
+	int	k;
 
 	i = -1;
+	k = -1;
 	while (++i < size)
 	{
 		j = -1;
 		while (++j < size)
-			helper_matrix[i][j] = size;
+		{
+			helper_matrix[i][j] = (int *)malloc(sizeof(int) * size);
+			if (!helper_matrix[i][j])
+			{
+				while (++k < j)
+				{
+					free(helper_matrix[i][k]);
+					helper_matrix[i][k] = 0;
+				}
+				free_matrix_3d(helper_matrix);
+				return (-1);
+			}
+			fill_with_size(helper_matrix[i][j], size);
+		}
 	}
+	return (0);
 }
 
-int	fill_helper_matrix(int **map_matrix, int **input_matrix, \
-							int **helper_matrix, int size)
+int	fill_helper_matrix(t_matrix *matrixes, int size)
 {
 	int	status;
 
-	fill_0(helper_matrix, size);
-	status = optimizer_up(map_matrix, input_matrix, helper_matrix, size);
+	if (fill_matrix(matrixes->helper_matrix, size) == -1)
+		return (0);
+	status = optimizer_up(matrixes, size);
 	if (status != -1)
-		status = optimizer_down(map_matrix, input_matrix, helper_matrix, size);
+		status = optimizer_down(matrixes, size);
 	if (status != -1)
-		status = optimizer_left(map_matrix, input_matrix, helper_matrix, size);
+		status = optimizer_left(matrixes, size);
 	if (status != -1)
-		status = optimizer_right(map_matrix, input_matrix, helper_matrix, size);
+		status = optimizer_right(matrixes, size);
 	if (status == -1)
 	{
 		ft_putstr("ERROR: Solution does not exist!\n");
