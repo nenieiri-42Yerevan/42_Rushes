@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:29:21 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/13 13:54:15 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/13 16:50:53 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ static int	init(t_matrix *matrixes, int size)
 	return (1);
 }
 
-static int	free_all(t_matrix *matrixes)
+static int	free_all(t_matrix *matrixes, int size)
 {
-	free_matrix(matrixes->input_matrix, 4);
-	free_matrix(matrixes->map_matrix, size);
-	free_matrix(matrixes->helper_matrix, size);
+	free_matrix_2d(matrixes->input_matrix, 4);
+	free_matrix_2d(matrixes->map_matrix, size);
+	free_matrix_3d(matrixes->helper_matrix);
 	return (0);
 }
 
@@ -49,15 +49,15 @@ static int	rush00(char **argv, int size)
 
 	status = 0;
 	if (init(&matrixes, size) == 0)
-		return (free_all(&matrixes));
+		return (free_all(&matrixes, size));
 	if (fill_input_matrix(argv[1], matrixes.input_matrix, size) == 0)
-		return (free_all(&matrixes));
+		return (free_all(&matrixes, size));
 	if (fill_helper_matrix(&matrixes, size) == 0)
-		return (free_all(&matrixes));
-/*	status = check_map(&matrixes, size);
+		return (free_all(&matrixes, size));
+	status = check_map(&matrixes, size);
 	while (status == 0)
 	{
-		if (change_matrix(&matrixes) == -1)
+		if (change_matrix(&matrixes, size) == -1)
 		{
 			ft_putstr("ERROR: Solution does not exist!\n");
 			break ;
@@ -66,7 +66,7 @@ static int	rush00(char **argv, int size)
 	}
 	if (status == 1)
 		print_map(matrixes.map_matrix);
-*/	return (0);
+	return (0);
 }
 
 int	main(int argc, char **argv)

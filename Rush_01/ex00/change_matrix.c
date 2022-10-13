@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:50:08 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/13 11:49:12 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/13 16:55:18 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int	change_again_row(int **map_matrix)
 	return (change_again_col(map_matrix));
 }
 
-int	change_matrix(t_matrix *matrixes)
+int	change_matrix(t_matrix *matrixes, int size)
 {
 	static int	max_rec = 0;
 	int			i;
@@ -77,20 +77,24 @@ int	change_matrix(t_matrix *matrixes)
 		j = -1;
 		while (matrixes->map_matrix[i][++j] != 0)
 		{
-			if (matrixes->map_matrix[i + 1] == 0 && matrixes->map_matrix[i][j + 1] == 0 && \
-					(matrixes->map_matrix[i][j] == matrixes->helper_matrix[i][j] || matrixes->helper_matrix[i][j] == -1))
+			if (matrixes->map_matrix[i + 1] == 0 && \
+				matrixes->map_matrix[i][j + 1] == 0 && \
+		(matrixes->map_matrix[i][j] == *max_pos(matrixes->helper_matrix[i][j], size) || \
+		 matrixes->helper_matrix[i][j] == 0))
 				return (-1);
-			if (matrixes->helper_matrix[i][j] == -1)
+			if (matrixes->helper_matrix[i][j] == 0)
 				continue ;
-			if (matrixes->map_matrix[i][j] >= matrixes->helper_matrix[i][j])
+			if (matrixes->map_matrix[i][j] >= \
+					*max_pos(matrixes->helper_matrix[i][j], size))
 				matrixes->map_matrix[i][j] = 1;
-			else if (matrixes->map_matrix[i][j] < matrixes->helper_matrix[i][j])
+			else if (matrixes->map_matrix[i][j] < \
+					*max_pos(matrixes->helper_matrix[i][j], size))
 			{
 				matrixes->map_matrix[i][j] += 1;
 				if (change_again_row(matrixes->map_matrix) == -1 && max_rec < 100000)
 				{
 					++max_rec;
-					change_matrix(matrixes);
+					change_matrix(matrixes, size);
 				}
 				else
 					max_rec = 0;
