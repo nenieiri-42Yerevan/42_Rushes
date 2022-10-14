@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:43:44 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/13 18:00:21 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/14 11:42:07 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,15 @@ static void	optimizer_right_size(int **input_matrix, int ***helper_matrix, \
 			z = max_pos(helper_matrix[j][k], size);
 			if ((size - input_matrix[3][j] + t) >= *z)
 				break ;
-			cut_values(helper_matrix[j][k], size - input_matrix[3][j] + t, size);
+			cut_values(helper_matrix[j][k], size - input_matrix[3][j] + t, \
+					size);
 			++t;
 		}
 	}
 }
 
-static int	optimizer_right_line(int **map_matrix, int ***helper_matrix, int j, \
-									int size)
+static int	optimizer_right_line(int **map_matrix, int ***helper_matrix, \
+									int j, int size)
 {
 	int	k;
 
@@ -81,11 +82,9 @@ int	optimizer_right(t_matrix *matrixes, int size)
 			matrixes->map_matrix[j][size - 1] = size;
 		}
 		else if (matrixes->input_matrix[3][j] == size)
-		{
 			if (optimizer_right_line(matrixes->map_matrix, \
 						matrixes->helper_matrix, j, size) == -1)
 				return (-1);
-		}
 	}
 	return (0);
 }

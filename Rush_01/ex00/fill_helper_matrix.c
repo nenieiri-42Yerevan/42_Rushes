@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 14:52:33 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/13 17:56:57 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/14 11:49:22 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,26 @@ static void	fill_with_size(int *helper_matrix_z, int size)
 		helper_matrix_z[i] = i + 1;
 }
 
+static int	del_helper(int ***helper_matrix, int i, int j, int size)
+{
+	int	k;
+
+	k = -1;
+	while (++k < j)
+	{
+		free(helper_matrix[i][k]);
+		helper_matrix[i][k] = 0;
+	}
+	free_matrix_3d(helper_matrix, size);
+	return (-1);
+}
+
 static int	fill_matrix(int ***helper_matrix, int size)
 {
 	int	i;
 	int	j;
-	int	k;
 
 	i = -1;
-	k = -1;
 	while (++i < size)
 	{
 		j = -1;
@@ -36,15 +48,7 @@ static int	fill_matrix(int ***helper_matrix, int size)
 		{
 			helper_matrix[i][j] = (int *)malloc(sizeof(int) * size);
 			if (!helper_matrix[i][j])
-			{
-				while (++k < j)
-				{
-					free(helper_matrix[i][k]);
-					helper_matrix[i][k] = 0;
-				}
-				free_matrix_3d(helper_matrix, size);
-				return (-1);
-			}
+				return (del_helper(helper_matrix, i, j, size));
 			fill_with_size(helper_matrix[i][j], size);
 		}
 	}

@@ -6,13 +6,14 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:15:33 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/13 17:59:29 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/14 11:42:56 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush01.h"
 
-static void	optimizer_up_size(int **input_matrix, int ***helper_matrix, int size)
+static void	optimizer_up_size(int **input_matrix, int ***helper_matrix, \
+								int size)
 {
 	int	j;
 	int	k;
@@ -31,13 +32,15 @@ static void	optimizer_up_size(int **input_matrix, int ***helper_matrix, int size
 			z = max_pos(helper_matrix[k][j], size);
 			if ((size - input_matrix[0][j] + t) >= *z)
 				break ;
-			cut_values(helper_matrix[k][j], size - input_matrix[0][j] + t, size);
+			cut_values(helper_matrix[k][j], size - input_matrix[0][j] + t, \
+						size);
 			++t;
 		}
 	}
 }
 
-static int	optimizer_up_line(int **map_matrix, int ***helper_matrix, int j, int size)
+static int	optimizer_up_line(int **map_matrix, int ***helper_matrix, int j, \
+								int size)
 {
 	int	k;
 
@@ -79,11 +82,9 @@ int	optimizer_up(t_matrix *matrixes, int size)
 			matrixes->map_matrix[0][j] = size;
 		}
 		else if (matrixes->input_matrix[0][j] == size)
-		{
 			if (optimizer_up_line(matrixes->map_matrix, \
 						matrixes->helper_matrix, j, size) == -1)
 				return (-1);
-		}
 	}
 	return (0);
 }

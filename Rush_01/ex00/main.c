@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:29:21 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/13 18:03:24 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/14 12:17:30 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,10 @@ static int	rush00(char **argv, int size)
 	status = check_map(&matrixes, size);
 	while (status == 0)
 	{
-		if (change_matrix(&matrixes, size) == -1)
+		status = change_matrix(&matrixes, size);
+		while (status == 1)
+			status = change_matrix(&matrixes, size);
+		if (status == -1)
 		{
 			ft_putstr("ERROR: Solution does not exist!\n");
 			break ;
