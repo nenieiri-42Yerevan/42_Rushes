@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:20:12 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/14 11:36:38 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/14 18:10:45 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	optimizer_down_line(int **map_matrix, int ***helper_matrix, int j, \
 			return (-1);
 		if (helper_matrix[k][j] == 0)
 			continue ;
-		if (if_in(helper_matrix[k][j], size - k, size) == -1)
+		if (if_in(helper_matrix[k][j], size - k, size) == 0)
 			return (-1);
 		map_matrix[k][j] = size - k;
 		free(helper_matrix[k][j]);

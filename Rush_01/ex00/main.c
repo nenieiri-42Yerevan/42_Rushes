@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:29:21 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/14 16:49:33 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/14 18:47:10 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int	routine(t_matrix *matrixes, int size)
 		count += find_unique(matrixes, size);
 		count += cross_clear(matrixes, size);
 	}
-	status = check_map(&matrixes, size);
+	status = check_map(matrixes, size);
 	return (status);
 }
 

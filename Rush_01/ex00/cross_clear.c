@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 13:18:20 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/14 14:15:33 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/14 18:34:30 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 static int	row_cleaner(int **helper_matrix, int val, int size)
 {
 	int	count;
-	int	i;
-	int	j;
+	int	col;
+	int	z;
 
 	count = 0;
-	i = -1;
-	while (++i < size)
+	col = -1;
+	while (++col < size)
 	{
-		j = -1;
-		while (++j < size)
+		if (helper_matrix[col] == 0)
+			continue ;
+		z = -1;
+		while (++z < size)
 		{
-			if (helper_matrix[i] == 0)
-				continue ;
-			if (helper_matrix[i][j] == val)
+			if (helper_matrix[col][z] == val)
 			{
-				helper_matrix[i][j] = -10;
+				helper_matrix[col][z] = -10;
 				++count;
 			}
 		}
@@ -40,21 +40,21 @@ static int	row_cleaner(int **helper_matrix, int val, int size)
 static int	col_cleaner(int ***helper_matrix, int col, int val, int size)
 {
 	int	count;
-	int	i;
+	int	row;
 	int	z;
 
 	count = 0;
-	i = -1;
-	while (++i < size)
+	row = -1;
+	while (++row < size)
 	{
+		if (helper_matrix[row][col] == 0)
+			continue ;
 		z = -1;
 		while (++z < size)
 		{
-			if (helper_matrix[i][col] == 0)
-				continue ;
-			if (helper_matrix[i][col][z] == val)
+			if (helper_matrix[row][col][z] == val)
 			{
-				helper_matrix[i][col][z] = -10;
+				helper_matrix[row][col][z] = -10;
 				++count;
 			}
 		}
@@ -64,23 +64,23 @@ static int	col_cleaner(int ***helper_matrix, int col, int val, int size)
 
 int	cross_clear(t_matrix *matrixes, int size)
 {
-	int	i;
-	int	j;
+	int	row;
+	int	col;
 	int	count;
 
-	i = -1;
+	row = -1;
 	count = 0;
-	while (matrixes->helper_matrix[++i] != 0)
+	while (++row < size)
 	{
-		j = -1;
-		while (++j < size)
+		col = -1;
+		while (++col < size)
 		{
-			if (matrixes->helper_matrix[i][j] == 0)
+			if (matrixes->helper_matrix[row][col] == 0)
 			{
-				count += row_cleaner(matrixes->helper_matrix[i], \
-										matrixes->map_matrix[i][j], size);
-				count += col_cleaner(matrixes->helper_matrix, j, \
-										matrixes->map_matrix[i][j], size);
+				count += row_cleaner(matrixes->helper_matrix[row], \
+										matrixes->map_matrix[row][col], size);
+				count += col_cleaner(matrixes->helper_matrix, col, \
+										matrixes->map_matrix[row][col], size);
 			}
 		}
 	}
