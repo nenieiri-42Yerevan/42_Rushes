@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 14:46:29 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/13 14:46:40 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/14 16:21:46 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ int	if_in(int *str, int val, int size)
 	i = -1;
 	while (++i < size)
 		if (str[i] == val)
-			return (0);
+			return (1);
 	return (-1);
 }

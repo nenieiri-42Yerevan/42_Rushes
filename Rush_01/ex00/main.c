@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:29:21 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/14 12:17:30 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/14 16:49:33 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,23 @@ static int	free_all(t_matrix *matrixes, int size)
 	return (0);
 }
 
+static int	routine(t_matrix *matrixes, int size)
+{
+	int	status;
+	int	count;
+
+	count = 1;
+	status = 0;
+	while (count != 0)
+	{
+		count = 0;
+		count += find_unique(matrixes, size);
+		count += cross_clear(matrixes, size);
+	}
+	status = check_map(&matrixes, size);
+	return (status);
+}
+
 static int	rush00(char **argv, int size)
 {
 	int			status;
@@ -54,7 +71,7 @@ static int	rush00(char **argv, int size)
 		return (free_all(&matrixes, size));
 	if (fill_helper_matrix(&matrixes, size) == 0)
 		return (free_all(&matrixes, size));
-	status = check_map(&matrixes, size);
+	status = routine(&matrixes, size);
 	while (status == 0)
 	{
 		status = change_matrix(&matrixes, size);
