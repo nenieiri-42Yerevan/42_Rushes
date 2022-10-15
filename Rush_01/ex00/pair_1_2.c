@@ -6,53 +6,24 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 13:52:58 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/15 14:27:04 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/15 17:46:41 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush01.h"
 
-static int pair_1_2_down(t_matrix *matrixes, int size, int col)
+static int pair_1_2_checker(t_matrix *matrixes, int size, int row, int col)
 {
-	if ((matrixes->helper_matrix[0][col] == 0) || 
-		(if_in(matrixes->helper_matrix[0][col], size - 1, size) == 0))
+	if (matrixes->helper_matrix[row][col] == 0 && \
+						matrixes->map_matrix[row][col] != size - 1)
 		return (-1);
-	matrixes->map_matrix[0][col] = size - 1;
-	free(matrixes->helper_matrix[0][col]);
-	matrixes->helper_matrix[0][col] = 0;
-	return (1);
-}
-
-static int pair_1_2_up(t_matrix *matrixes, int size, int col)
-{
-	if ((matrixes->helper_matrix[size - 1][col] == 0) || 
-		(if_in(matrixes->helper_matrix[size - 1][col], size - 1, size) == 0))
+	if (matrixes->helper_matrix[row][col] == 0)
+		return (1);
+	if (if_in(matrixes->helper_matrix[row][col], size - 1, size) == 0)
 		return (-1);
-	matrixes->map_matrix[size - 1][col] = size - 1;
-	free(matrixes->helper_matrix[size - 1][col]);
-	matrixes->helper_matrix[size - 1][col] = 0;
-	return (1);
-}
-
-static int pair_1_2_left(t_matrix *matrixes, int size, int row)
-{
-	if ((matrixes->helper_matrix[row][size - 1] == 0) || 
-		(if_in(matrixes->helper_matrix[row][size - 1], size - 1, size) == 0))
-		return (-1);
-	matrixes->map_matrix[row][size - 1] = size - 1;
-	free(matrixes->helper_matrix[row][size - 1]);
-	matrixes->helper_matrix[row][size - 1] = 0;
-	return (1);
-}
-
-static int pair_1_2_right(t_matrix *matrixes, int size, int row)
-{
-	if ((matrixes->helper_matrix[row][0] == 0) || 
-		(if_in(matrixes->helper_matrix[row][0], size - 1, size) == 0))
-		return (-1);
-	matrixes->map_matrix[row][0] = size - 1;
-	free(matrixes->helper_matrix[row][0]);
-	matrixes->helper_matrix[row][0] = 0;
+	matrixes->map_matrix[row][col] = size - 1;
+	free(matrixes->helper_matrix[row][col]);
+	matrixes->helper_matrix[row][col] = 0;
 	return (1);
 }
 
@@ -67,16 +38,16 @@ int	pair_1_2(t_matrix *matrixes, int size)
 	{
 		if (matrixes->input_matrix[0][col] == 1 && \
 					matrixes->input_matrix[1][col] == 2)
-			res = pair_1_2_up(matrixes, size, col);
+			res = pair_1_2_checker(matrixes, size, size - 1,  col);
 		else if (matrixes->input_matrix[0][col] == 2 && \
 					matrixes->input_matrix[1][col] == 1)
-			res = pair_1_2_down(matrixes, size, col);
+			res = pair_1_2_checker(matrixes, size, 0, col);
 		else if (matrixes->input_matrix[2][col] == 1 && \
 					matrixes->input_matrix[3][col] == 2)
-			res = pair_1_2_left(matrixes, size, col);
+			res = pair_1_2_checker(matrixes, size, col, size - 1);
 		else if (matrixes->input_matrix[2][col] == 2 && \
 					matrixes->input_matrix[3][col] == 1)
-			res = pair_1_2_right(matrixes, size, col);
+			res = pair_1_2_checker(matrixes, size, col, 0);
 		if (res == 1)
 			cross_clear(matrixes, size);
 	}
