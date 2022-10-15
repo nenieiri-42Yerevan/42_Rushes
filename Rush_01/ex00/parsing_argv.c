@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:31:59 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/12 12:16:33 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/15 18:12:46 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,7 @@ int	parsing_argv(char *argv)
 	if (size % 4 != 0)
 		return (-1);
 	size /= 4;
+	if (size < 2 || size > 9)
+		return (-1);
 	return (size);
 }
