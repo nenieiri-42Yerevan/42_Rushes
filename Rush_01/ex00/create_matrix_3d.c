@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 11:56:10 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/13 15:56:52 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/15 18:01:59 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,22 @@ static void	free_matrix_3d_f(int ***matrix, int i)
 	}
 	free(matrix);
 	matrix = 0;
+}
+
+static void	set_null(int ***matrix, int height, int width)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < height)
+	{
+		j = -1;
+		while (++j < width)
+		{
+			matrix[i][j] = 0;
+		}
+	}
 }
 
 int	***create_matrix_3d(int height, int width)
@@ -48,5 +64,6 @@ int	***create_matrix_3d(int height, int width)
 		}
 		matrix[i][width] = 0;
 	}
+	set_null(matrix, height, width);
 	return (matrix);
 }
