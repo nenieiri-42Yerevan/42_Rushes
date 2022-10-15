@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 14:52:33 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/15 13:21:53 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/15 14:20:42 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,8 @@ int	fill_helper_matrix(t_matrix *matrixes, int size)
 		return (0);
 	}
 	cross_clear(matrixes, size);
+	status = pair_1_2(matrixes, size);
+	if (status == -1)
+		return (0);
 	return (1);
 }
