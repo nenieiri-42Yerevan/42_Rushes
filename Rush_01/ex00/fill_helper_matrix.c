@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 14:52:33 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/15 14:20:42 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/15 15:20:16 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int	fill_helper_matrix(t_matrix *matrixes, int size)
 		ft_putstr("ERROR: Solution does not exist!\n");
 		return (0);
 	}
+	pair_2_2(matrixes, size);
 	cross_clear(matrixes, size);
 	status = pair_1_2(matrixes, size);
 	if (status == -1)

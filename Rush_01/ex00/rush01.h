@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:55:42 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/15 13:51:59 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/15 15:06:53 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int		optimizer_down(t_matrix *matrixes, int size);
 int		optimizer_left(t_matrix *matrixes, int size);
 int		optimizer_right(t_matrix *matrixes, int size);
 int		pair_1_2(t_matrix *matrixes, int size);
+void	pair_2_2(t_matrix *matrixes, int size);
 int		cross_clear(t_matrix *matrixes, int size);
 int		find_unique(t_matrix *matrixes, int size);
 
@@ -53,6 +54,7 @@ int		check_map(t_matrix *matrixes, int size);
 int		change_matrix(t_matrix *matrixes, int size);
 
 void	cut_values(int *str, int val, int size);
+void	cut_value(int *str, int val, int size);
 int		*max_pos(int *str, int size);
 int		if_in(int *str, int val, int size);
 
