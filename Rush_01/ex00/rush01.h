@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:55:42 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/16 12:02:19 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/16 13:16:00 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,11 @@ int		parsing_argv(char *argv);
 int		init_struct(t_matrix *matrixes, int size);
 void	free_matrix_2d(int **matrix, int i);
 void	free_matrix_3d(int ***matrix, int size);
+int		free_helper(int ***helper_matrix, int i, int j, int size);
+int		free_all(t_matrix *matrixes, int size);
 
 void	fill_map_matrix(int **map_matrix, int size);
 int		fill_input_matrix(char *argv, int **input_matrix, int size);
-
 int		fill_helper_matrix(t_matrix *matrixes, int size);
 int		optimizer_up(t_matrix *matrixes, int size);
 int		optimizer_down(t_matrix *matrixes, int size);
@@ -47,6 +48,9 @@ int		pair_1_2(t_matrix *matrixes, int size);
 void	pair_2_2(t_matrix *matrixes, int size);
 int		cross_clear(t_matrix *matrixes, int size);
 int		find_unique(t_matrix *matrixes, int size);
+
+int		routine(t_matrix *matrixes, int size);
+int		deep_copy(t_matrix *matrixes, t_matrix *tmp, int size);
 
 void	print_map(int **matrix);
 int		check_map(t_matrix *matrixes, int size);
