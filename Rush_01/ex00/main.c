@@ -6,33 +6,11 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:29:21 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/15 17:52:21 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/16 11:58:48 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush01.h"
-
-static int	init(t_matrix *matrixes, int size)
-{
-	matrixes->map_matrix = create_matrix_2d(size, size);
-	if (matrixes->map_matrix == 0)
-		return (0);
-	matrixes->input_matrix = create_matrix_2d(4, size);
-	if (matrixes->input_matrix == 0)
-	{
-		free_matrix_2d(matrixes->map_matrix, size);
-		return (0);
-	}
-	matrixes->helper_matrix = create_matrix_3d(size, size);
-	if (matrixes->helper_matrix == 0)
-	{
-		free_matrix_2d(matrixes->map_matrix, size);
-		free_matrix_2d(matrixes->input_matrix, size);
-		return (0);
-	}
-	fill_map_matrix(matrixes->map_matrix, size);
-	return (1);
-}
 
 static int	free_all(t_matrix *matrixes, int size)
 {
@@ -65,7 +43,7 @@ static int	rush00(char **argv, int size)
 	t_matrix	matrixes;
 
 	status = 0;
-	if (init(&matrixes, size) == 0)
+	if (init_struct(&matrixes, size) == 0)
 		return (free_all(&matrixes, size));
 	if (fill_input_matrix(argv[1], matrixes.input_matrix, size) == 0)
 		return (free_all(&matrixes, size));

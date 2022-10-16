@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:55:42 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/15 15:06:53 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/16 12:02:19 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ void	ft_putstr(char *s);
 char	*ft_strchr(const char *str, int c);
 
 int		parsing_argv(char *argv);
-int		**create_matrix_2d(int height, int width);
-int		***create_matrix_3d(int height, int width);
+int		init_struct(t_matrix *matrixes, int size);
 void	free_matrix_2d(int **matrix, int i);
 void	free_matrix_3d(int ***matrix, int size);
 
