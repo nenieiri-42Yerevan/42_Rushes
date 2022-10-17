@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 12:24:17 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/17 15:20:16 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/17 17:03:21 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,6 @@ int	routine(t_matrix *matrixes, int size)
 		count += if_only(matrixes, size);
 	}
 	status = check_map(matrixes, size);
-//	print_map(matrixes->map_matrix);
-//	printf("\n");
-//	usleep(10000);
 	if (status == 0)
 	{
 		status = try_random(matrixes, size);
