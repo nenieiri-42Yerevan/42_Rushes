@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:02:54 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/13 11:46:54 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/17 14:33:26 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ int	check_map(t_matrix *matrixes, int size)
 	int	count;
 
 	i = -1;
+	if (check_dublicates(matrixes->map_matrix, size) == 0)
+		return (0);
 	while (++i < 4)
 	{
 		j = -1;

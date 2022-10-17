@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:29:21 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/17 11:47:41 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/17 16:11:59 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,12 @@ static int	rush00(char **argv, int size)
 	t_matrix	matrixes;
 
 	status = 0;
-	init(argv[1], &matrixes, size);
+	if (init(argv[1], &matrixes, size) == 0)
+		return (0);
 	status = routine(&matrixes, size);
-/*	while (status == 0)
-	{
-		status = change_matrix(&matrixes, size);
-		while (status == 1)
-			status = change_matrix(&matrixes, size);
-*/		if (status == -1)
-		{
-			ft_putstr("ERROR: Solution does not exist!\n");
-//			break ;
-		}
-/*		status = check_map(&matrixes, size);
-	}
-*/	if (status == 1)
+	if (status == -1)
+		ft_putstr("ERROR: Solution does not exist!\n");
+	else if (status == 1)
 		print_map(matrixes.map_matrix);
 	free_all(&matrixes, size);
 	return (0);
@@ -69,11 +60,7 @@ int	main(int argc, char **argv)
 		if (size == -1)
 			ft_putstr("ERROR: Arguments are not valid!\n");
 		else
-		{
-			rush00(argv, size);
-			while (1) ;
-//			return (rush00(argv, size));
-		}
+			return (rush00(argv, size));
 	}
 	else
 		ft_putstr("ERROR: Number of arguments is wrong!\n");

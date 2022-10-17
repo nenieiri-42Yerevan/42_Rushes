@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 16:09:21 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/14 18:44:48 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/17 15:19:44 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,5 +127,7 @@ int	find_unique(t_matrix *matrixes, int size)
 	if (count != 0)
 		return (count);
 	count += find_in_col(matrixes, size);
+	if (count != 0)
+		cross_clear(matrixes, size);
 	return (count);
 }
