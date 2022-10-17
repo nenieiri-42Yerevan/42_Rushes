@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 13:23:51 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/16 13:55:02 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/16 16:10:47 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static int	if_end(t_matrix *matrixes, int size)
 		col = -1;
 		while (++col < size)
 			if (matrixes->helper_matrix[row][col] != 0)
-				return (-1);
+				return (1);
 	}
-	return (0);
+	return (-1);
 }
 
 static int	count_size(int *helper_matrix, int size)
@@ -47,9 +47,13 @@ static int	*find_cell(t_matrix *matrixes, int size, int count)
 {
 	int	row;
 	int	col;
+	int	*cell;
 
 	row = -1;
-	while (matrixes->helper_matrix[row] != 0)
+	cell = (int *)malloc(sizeof(int) * 2);
+	if (!cell)
+		return (0);
+	while (matrixes->helper_matrix[++row] != 0)
 	{
 		col = -1;
 		while (++col < size)
@@ -57,10 +61,24 @@ static int	*find_cell(t_matrix *matrixes, int size, int count)
 			if (matrixes->helper_matrix[row][col] == 0)
 				continue ;
 			if (count_size(matrixes->helper_matrix[row][col], size) == count)
-				return (matrixes->map_matrix[row][col]);
+			{
+				cell[0] = row;
+				cell[1] = col;
+				return (cell);
+			}
 		}
 	}
 	return (0);
+}
+
+static int	*no_solution(int **cell)
+{
+	*cell = (int *)malloc(sizeof(int) * 2);
+	if (!(*cell))
+		return (0);
+	(*cell)[0] = -1;
+	(*cell)[1] = -1;
+	return (*cell);
 }
 
 int	*find_min_random(t_matrix *matrixes, int size)
@@ -68,12 +86,14 @@ int	*find_min_random(t_matrix *matrixes, int size)
 	int	count;
 	int	row;
 	int	col;
+	int	*cell;
 
 	count = 10;
+	cell = 0;
 	if (if_end(matrixes, size) == -1)
-		return (0);
+		return (no_solution(&cell));
 	row = -1;
-	while (matrixes->helper_matrix[row] != 0)
+	while (matrixes->helper_matrix[++row] != 0)
 	{
 		col = -1;
 		while (++col < size)

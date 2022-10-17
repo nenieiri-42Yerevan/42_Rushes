@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 14:44:42 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/15 15:15:50 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/16 16:22:19 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	del_if_found(t_matrix *matrixes, int size, int row, int col)
 {
-	if ((matrixes->helper_matrix[row][col] != 0) && 
-		(if_in(matrixes->helper_matrix[row][col], size - 1, size) == 1))
+	if ((matrixes->helper_matrix[row][col] != 0) && \
+			(if_in(matrixes->helper_matrix[row][col], size - 1, size) == 1))
 		cut_value(matrixes->helper_matrix[row][col], size - 1, size);
 }
 

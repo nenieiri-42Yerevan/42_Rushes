@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:29:21 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/16 12:36:29 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/17 11:47:41 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,11 @@ int	main(int argc, char **argv)
 		if (size == -1)
 			ft_putstr("ERROR: Arguments are not valid!\n");
 		else
-			return (rush00(argv, size));
+		{
+			rush00(argv, size);
+			while (1) ;
+//			return (rush00(argv, size));
+		}
 	}
 	else
 		ft_putstr("ERROR: Number of arguments is wrong!\n");

@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:55:42 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/16 13:16:00 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/16 14:40:55 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int		find_unique(t_matrix *matrixes, int size);
 
 int		routine(t_matrix *matrixes, int size);
 int		deep_copy(t_matrix *matrixes, t_matrix *tmp, int size);
+int		*find_min_random(t_matrix *matrixes, int size);
 
 void	print_map(int **matrix);
 int		check_map(t_matrix *matrixes, int size);
