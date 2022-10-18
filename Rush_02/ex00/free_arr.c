@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run.c                                              :+:      :+:    :+:   */
+/*   free_arr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 13:39:33 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/18 17:33:39 by vismaily         ###   ########.fr       */
+/*   Created: 2022/10/18 17:31:13 by vismaily          #+#    #+#             */
+/*   Updated: 2022/10/18 17:31:29 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-void	run(char *dict, char *number)
+void	free_arr(char **arr)
 {
-	t_dict	**my_dict;
+	int	i;
 
-	(void)number;
-	my_dict = get_dict(dict);
+	i = -1;
+	if (arr == 0)
+		return ;
+	while (arr[++i] != 0)
+	{
+		free(arr[i]);
+		arr[i] = 0;
+	}
+	free(arr);
+	arr = 0;
 }

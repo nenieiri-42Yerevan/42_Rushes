@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:45:32 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/18 16:45:53 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/18 17:31:29 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,49 @@ static int	dict_size(char **dict_lines)
 	return (size);
 }
 
+static void	free_dict(t_dict **dict, int j)
+{
+	int	i;
+
+	i = -1;
+	if (dict == 0)
+		return ;
+	while (++i < j)
+	{
+		free(dict[i]);
+		dict[i] = 0;
+	}
+	free(dict);
+	dict = 0;
+}
+
+static int	save_values(char **dict_lines, int i, int j, t_dict **dict)
+{
+	char	*tmp;
+	char	**split_value;
+
+	split_value = ft_split(dict_lines[i], ':');
+	dict[j] = (t_dict *)malloc(sizeof(t_dict) * 1);
+	if (!dict[j])
+	{
+		free_dict(dict, j);
+		return (0);
+	}
+	tmp = ft_strtrim(split_value[0], " ");
+	dict[j]->key = tmp;
+	tmp = ft_strtrim(split_value[1], " ");
+	dict[j]->value = tmp;
+	free(split_value[0]);
+	free(split_value[1]);
+	free(split_value);
+	return (1);
+}
+
 static t_dict	**get_dict_arr(char **dict_lines)
 {
 	t_dict	**dict;
 	int		size;
 	int		i;
-	char	**split_value;
 	int		j;
 
 	size = dict_size(dict_lines);
@@ -49,20 +86,15 @@ static t_dict	**get_dict_arr(char **dict_lines)
 	{
 		if (ft_strchr(dict_lines[i], ':') == 0)
 			continue ;
-		split_value = ft_split(dict_lines[i], ':');
-		if (dict_lines == 0)
-			continue ;
-		free(dict_lines[i]);
-		dict[j] = (t_dict *)malloc(sizeof(t_dict) * 1);
-		dict[j]->key = ft_strtrim(split_value[0], " ");
-		dict[j]->value = ft_strtrim(split_value[1], " ");
-		++j;
+		if (save_values(dict_lines, i, j++, dict) == 0)
+			return (0);
 	}
 	return (dict);
 }
 
 t_dict	**get_dict(char *dict)
 {
+	t_dict	**my_dict;
 	char	**lines;
 
 	lines = ft_split(dict, '\n');
@@ -71,6 +103,8 @@ t_dict	**get_dict(char *dict)
 		ft_putstr_fd("Error\n", 2);
 		return (0);
 	}
+	my_dict = get_dict_arr(lines);
+	free_arr(lines);
 	free(dict);
-	return (get_dict_arr(lines));
+	return (my_dict);
 }

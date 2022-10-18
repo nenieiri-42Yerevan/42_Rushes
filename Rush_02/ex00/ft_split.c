@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 21:29:50 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/18 15:36:03 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/18 17:33:09 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static size_t	lenght(char const *s, char c)
 {
-	size_t len;
-	size_t amount;
+	size_t	len;
+	size_t	amount;
 
 	amount = 0;
 	while (*s)
@@ -36,9 +36,9 @@ static size_t	lenght(char const *s, char c)
 	return (amount);
 }
 
-static void		ft_next_size(char const **s, size_t *next, char c)
+static void	ft_next_size(char const **s, size_t *next, char c)
 {
-	size_t index;
+	size_t	index;
 
 	*s += *next;
 	*next = 0;
@@ -54,9 +54,9 @@ static void		ft_next_size(char const **s, size_t *next, char c)
 	}
 }
 
-static char		**ft_memory_error(char **s)
+static char	**ft_memory_error(char **s)
 {
-	size_t index;
+	size_t	index;
 
 	index = 0;
 	while (s[index])
@@ -78,14 +78,16 @@ char	**ft_split(const char *s, char c)
 	if (!s)
 		return (NULL);
 	sp_len = lenght(s, c);
-	if (!(res = (char **)malloc(sizeof(char *) * (sp_len + 1))))
+	res = (char **)malloc(sizeof(char *) * (sp_len + 1));
+	if (!res)
 		return (NULL);
 	len = 0;
 	sp_index = 0;
 	while (sp_index < sp_len)
 	{
 		ft_next_size(&s, &len, c);
-		if (!(res[sp_index] = malloc(sizeof(char) * (len + 1))))
+		res[sp_index] = malloc(sizeof(char) * (len + 1));
+		if (!res)
 			return (ft_memory_error(res));
 		ft_strlcpy(res[sp_index], s, len + 1);
 		++sp_index;

@@ -6,14 +6,12 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:55:42 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/17 17:02:11 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/18 12:49:09 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RUSH01_H
 # define RUSH01_H
-
-# include <stdio.h>
 
 # include <unistd.h>
 # include <stdlib.h>

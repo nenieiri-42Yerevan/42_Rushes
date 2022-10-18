@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 12:09:07 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/18 16:45:23 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/18 17:31:04 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ char		*parse_number(char *str);
 char		*read_all(char *dict_name);
 void		run(char *dict, char *number);
 t_dict		**get_dict(char *dict);
+void		free_arr(char **arr);
 
 #endif
