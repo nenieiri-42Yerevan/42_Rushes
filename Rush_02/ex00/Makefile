@@ -6,11 +6,11 @@
 #    By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/18 11:49:19 by vismaily          #+#    #+#              #
-#    Updated: 2022/10/18 11:59:22 by vismaily         ###   ########.fr        #
+#    Updated: 2022/10/18 12:51:17 by vismaily         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= rush02
+NAME		= rush-02
 
 SRCS		= $(wildcard *.c)
 
@@ -23,17 +23,19 @@ CFLAGS		= -Wall -Wextra -Werror
 RM			= rm -f
 
 .c.o:
-			$(CC) $(CFLAGS) -o $(<:.c=.o) -c $<
+			@$(CC) $(CFLAGS) -o $(<:.c=.o) -c $<
 
 all:		$(NAME)
 
 $(NAME): 	$(OBJS)
-			$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+			@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 clean:
-			$(RM) $(OBJS)
+			@$(RM) $(OBJS)
 
 fclean:		clean
-			$(RM) $(NAME)
+			@$(RM) $(NAME)
+
+re:			fclean all
 
 .PHONY:		all clean fclean re
