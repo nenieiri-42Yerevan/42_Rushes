@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
+/*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 12:06:39 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/18 12:11:05 by vismaily         ###   ########.fr       */
+/*   Created: 2021/09/03 20:10:46 by vismaily          #+#    #+#             */
+/*   Updated: 2022/10/22 14:29:08 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-void	ft_putchar_fd(char c, int fd)
+char	*ft_strndup(const char *s1, size_t n)
 {
-	write(fd, &c, 1);
+	char			*new_s1;
+	unsigned int	i;
+
+	i = -1;
+	new_s1 = (char *)malloc(sizeof(char) * (n + 1));
+	if (new_s1 == NULL)
+		return (NULL);
+	while (++i < n && s1[i] != '\0')
+		new_s1[i] = s1[i];
+	new_s1[i] = '\0';
+	return (new_s1);
 }

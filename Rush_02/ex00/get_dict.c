@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:45:32 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/18 17:31:29 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/22 15:20:33 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ static int	save_values(char **dict_lines, int i, int j, t_dict **dict)
 		return (0);
 	}
 	tmp = ft_strtrim(split_value[0], " ");
+	free(split_value[0]);
 	dict[j]->key = tmp;
 	tmp = ft_strtrim(split_value[1], " ");
-	dict[j]->value = tmp;
-	free(split_value[0]);
 	free(split_value[1]);
+	dict[j]->value = tmp;
 	free(split_value);
 	return (1);
 }

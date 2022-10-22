@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   free_trio.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/24 12:01:58 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/22 14:14:38 by vismaily         ###   ########.fr       */
+/*   Created: 2022/10/22 11:24:36 by vismaily          #+#    #+#             */
+/*   Updated: 2022/10/22 11:25:08 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+void	free_trio(t_trio *trio)
 {
-	size_t	i;
-
-	if (dstsize == 0)
-		return (ft_strlen(src));
-	i = 0;
-	while (i < dstsize - 1 && src[i] != '\0')
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	while (src[i] != '\0')
-		i++;
-	return (i);
+	if (trio->hundred != NULL)
+		free(trio->hundred);
+	if (trio->hundred_units != NULL)
+		free(trio->hundred_units);
+	if (trio->dozen != NULL)
+		free(trio->dozen);
+	if (trio->unit != NULL)
+		free(trio->unit);
+	if (trio != NULL)
+		free(trio);
 }

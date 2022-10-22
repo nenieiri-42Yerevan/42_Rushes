@@ -1,18 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   display_zero.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 12:12:21 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/22 14:45:41 by vismaily         ###   ########.fr       */
+/*   Created: 2022/10/22 12:00:59 by vismaily          #+#    #+#             */
+/*   Updated: 2022/10/22 12:26:25 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-void	ft_putstr_fd(char *str, int fd)
+int		display_zero(int n, t_dict **dict)
 {
-	write(fd, str, ft_strlen(str));
+	int		i;
+	char	*tab;
+
+	tab = (char *)malloc(sizeof(char) * (((n * 3) + 1) + 1));
+	if (!tab)
+		return (0);
+	i = -1;
+	tab[++i] = '1';
+	while (++i < (n * 3) + 1)
+		tab[i] = '0';
+	tab[i] = '\0';
+	i = -1;
+	while (dict[++i] != 0)
+	{
+		if (ft_strcmp(tab, dict[i]->key) == 0)
+		{
+			ft_putstr_fd(" ", 1);
+			ft_putstr_fd(dict[i]->value, 1);
+			return (1);
+		}
+	}
+	free(tab);
+	return (0);
 }

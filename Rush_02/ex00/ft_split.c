@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 21:29:50 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/18 17:33:09 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/22 15:14:48 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static char	**ft_memory_error(char **s)
 	return (NULL);
 }
 
-char	**ft_split(const char *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**res;
 	size_t	len;
@@ -87,7 +87,7 @@ char	**ft_split(const char *s, char c)
 	{
 		ft_next_size(&s, &len, c);
 		res[sp_index] = malloc(sizeof(char) * (len + 1));
-		if (!res)
+		if (!res[sp_index])
 			return (ft_memory_error(res));
 		ft_strlcpy(res[sp_index], s, len + 1);
 		++sp_index;
