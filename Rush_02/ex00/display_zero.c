@@ -6,13 +6,13 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 12:00:59 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/23 11:56:07 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/23 12:07:15 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-int		display_zero(int n, t_dict **dict)
+static char	*fill_tab(int n)
 {
 	int		i;
 	char	*tab;
@@ -25,6 +25,17 @@ int		display_zero(int n, t_dict **dict)
 	while (++i < (n * 3) + 1)
 		tab[i] = '0';
 	tab[i] = '\0';
+	return (tab);
+}
+
+int	display_zero(int n, t_dict **dict)
+{
+	int		i;
+	char	*tab;
+
+	tab = fill_tab(n);
+	if (tab == 0)
+		return (0);
 	i = -1;
 	while (dict[++i] != 0)
 	{

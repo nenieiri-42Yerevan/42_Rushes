@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 12:09:07 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/23 11:23:22 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/23 12:00:41 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ typedef struct s_dict
 	char	*value;
 }			t_dict;
 
-typedef	struct	s_trio
+typedef struct s_trio
 {
-	char *hundred_units;
-	char *hundred;
-	char *dozen;
-	char *unit;
+	char	*hundred_units;
+	char	*hundred;
+	char	*dozen;
+	char	*unit;
 }				t_trio;
 
 void		ft_putstr_fd(char *str, int fd);
@@ -55,6 +55,5 @@ t_trio		*trio_to_struct(char *str);
 int			display_zero(int n, t_dict **dict);
 void		free_trio(t_trio *trio);
 void		free_dict(t_dict **dict);
-
 
 #endif

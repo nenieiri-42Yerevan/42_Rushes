@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 11:28:56 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/23 11:48:55 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/23 12:24:12 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,9 @@ static char	*strndup_buff(char *str, int n, int buffer_extension)
 	return (dest);
 }
 
-t_trio	*trio_to_struct(char *str)
+static t_trio	*trio_init(void)
 {
-	t_trio *result;
-	char	*tmp;
+	t_trio	*result;
 
 	result = (t_trio *)malloc(sizeof(t_trio));
 	if (!result)
@@ -39,11 +38,25 @@ t_trio	*trio_to_struct(char *str)
 	result->hundred_units = 0;
 	result->dozen = 0;
 	result->unit = 0;
+	return (result);
+}
+
+static void	fill_hundreds(t_trio *result, char *str)
+{
+	result->hundred_units = strndup_buff(&str[0], 1, 0);
+	result->hundred = strndup_buff("100", 3, 0);
+}
+
+t_trio	*trio_to_struct(char *str)
+{
+	t_trio	*result;
+	char	*tmp;
+
+	result = trio_init();
+	if (result == 0)
+		return (0);
 	if (str[0] >= '1')
-	{
-		result->hundred_units = strndup_buff(&str[0], 1, 0);
-		result->hundred = strndup_buff("100", 3, 0);
-	}
+		fill_hundreds(result, str);
 	if (str[1] >= '2')
 	{
 		tmp = strndup_buff("0", 1, 0);

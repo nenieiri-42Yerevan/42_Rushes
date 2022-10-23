@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 13:39:33 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/23 11:55:55 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/23 12:22:20 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	display_units(char *str, t_dict **dict, int *f)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (dict[++i] != 0 && str != 0)
@@ -91,26 +91,25 @@ void	run(char *dict, char *number)
 	int		zero;
 	char	*nb;
 
+	zero = 0;
 	my_dict = get_dict(dict);
 	if (dict == NULL || ft_strlen(number) > dict_max_len(my_dict))
-		ft_putstr_fd("Dict Error\n", 2);
-	else
 	{
-		if (*number == '0')
-		{
-			zero = 0;
-			display_units(number, my_dict, &zero);
-			free_dict(my_dict);
-			return ;
-		}
-		nb = format_string(number);
-		if (nb == 0)
-		{
-			free_dict(my_dict);
-			return ;
-		}
+		ft_putstr_fd("Dict Error\n", 2);
+		return ;
+	}
+	if (*number == '0')
+	{
+		display_units(number, my_dict, &zero);
+		free_dict(my_dict);
+		return ;
+	}
+	nb = format_string(number);
+	if (nb != 0)
+	{
 		convert_to_text(nb, my_dict);
 		write(1, "\n", 1);
-		free_dict(my_dict);
 	}
+	free_dict(my_dict);
+	return ;
 }

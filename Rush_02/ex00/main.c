@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 12:00:30 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/23 11:41:29 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/23 12:26:49 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,5 @@ int	main(int argc, char **argv)
 		else if (dict != 0)
 			run(dict, number);
 	}
-	while (1) ;
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 12:28:00 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/22 12:28:13 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/23 11:58:12 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-int		ft_strcmp(char *s1, char *s2)
+int	ft_strcmp(char *s1, char *s2)
 {
 	while (*s1 && *s2 && (*s1 == *s2))
 	{
