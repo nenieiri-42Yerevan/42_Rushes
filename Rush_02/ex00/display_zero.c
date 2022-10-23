@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 12:00:59 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/22 12:26:25 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/23 11:56:07 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,12 @@ int		display_zero(int n, t_dict **dict)
 		{
 			ft_putstr_fd(" ", 1);
 			ft_putstr_fd(dict[i]->value, 1);
+			free(tab);
+			tab = 0;
 			return (1);
 		}
 	}
-	free(tab);
+	if (tab != 0)
+		free(tab);
 	return (0);
 }

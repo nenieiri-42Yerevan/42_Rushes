@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:45:32 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/22 15:20:33 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/23 11:25:49 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	dict_size(char **dict_lines)
 	return (size);
 }
 
-static void	free_dict(t_dict **dict, int j)
+static void	free_dict_j(t_dict **dict, int j)
 {
 	int	i;
 
@@ -48,17 +48,17 @@ static int	save_values(char **dict_lines, int i, int j, t_dict **dict)
 	char	*tmp;
 	char	**split_value;
 
-	split_value = ft_split(dict_lines[i], ':');
-	dict[j] = (t_dict *)malloc(sizeof(t_dict) * 1);
+	dict[j] = (t_dict *)malloc(sizeof(t_dict));
 	if (!dict[j])
 	{
-		free_dict(dict, j);
+		free_dict_j(dict, j);
 		return (0);
 	}
-	tmp = ft_strtrim(split_value[0], " ");
+	split_value = ft_split(dict_lines[i], ':');
+	tmp = ft_strtrim(split_value[0], " \r\t\v\n\f");
 	free(split_value[0]);
 	dict[j]->key = tmp;
-	tmp = ft_strtrim(split_value[1], " ");
+	tmp = ft_strtrim(split_value[1], " \r\t\v\n\f");
 	free(split_value[1]);
 	dict[j]->value = tmp;
 	free(split_value);
@@ -106,5 +106,6 @@ t_dict	**get_dict(char *dict)
 	my_dict = get_dict_arr(lines);
 	free_arr(lines);
 	free(dict);
+	rm_spaces(my_dict);
 	return (my_dict);
 }

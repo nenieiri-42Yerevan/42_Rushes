@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free_dict.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 12:00:30 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/23 11:41:29 by vismaily         ###   ########.fr       */
+/*   Created: 2022/10/23 11:20:34 by vismaily          #+#    #+#             */
+/*   Updated: 2022/10/23 11:39:58 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-int	main(int argc, char **argv)
+void	free_dict(t_dict **my_dict)
 {
-	char	*number;
-	char	*dict;
+	int	i;
 
-	if (argc > 3)
-		ft_putstr_fd("Error\n", 2);
-	else if (argc != 1)
+	if (my_dict == 0)
+		return ;
+	i = -1;
+	while (my_dict[++i] != 0)
 	{
-		if (argc == 2)
-		{
-			number = parse_number(argv[1]);
-			dict = read_all("numbers.dict");
-		}
-		else
-		{
-			number = parse_number(argv[2]);
-			dict = read_all(argv[1]);
-		}
-		if (number == 0)
-			ft_putstr_fd("Error\n", 2);
-		else if (dict != 0)
-			run(dict, number);
+		if (my_dict[i]->key != 0)
+			free(my_dict[i]->key);
+		if (my_dict[i]->value != 0)
+			free(my_dict[i]->value);
+		if (my_dict[i] != 0)
+			free(my_dict[i]);
 	}
-	while (1) ;
-	return (0);
+	free(my_dict);
 }

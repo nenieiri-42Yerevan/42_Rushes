@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 13:39:33 by vismaily          #+#    #+#             */
-/*   Updated: 2022/10/22 15:12:53 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/10/23 11:55:55 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,12 @@ static void	convert_to_text(char *nb, t_dict **dict)
 	int		i;
 	int		size;
 	int		f;
+	char	*tmp;
 	t_trio	*trio;
 
 	i = -1;
 	f = 0;
+	tmp = nb;
 	size = ft_strlen(nb) / 3;
 	while (++i < size)
 	{
@@ -80,6 +82,7 @@ static void	convert_to_text(char *nb, t_dict **dict)
 		free_trio(trio);
 		nb += 3;
 	}
+	free(tmp);
 }
 
 void	run(char *dict, char *number)
@@ -97,12 +100,17 @@ void	run(char *dict, char *number)
 		{
 			zero = 0;
 			display_units(number, my_dict, &zero);
+			free_dict(my_dict);
 			return ;
 		}
 		nb = format_string(number);
 		if (nb == 0)
+		{
+			free_dict(my_dict);
 			return ;
+		}
 		convert_to_text(nb, my_dict);
 		write(1, "\n", 1);
+		free_dict(my_dict);
 	}
 }
